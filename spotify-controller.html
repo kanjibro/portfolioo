@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Controller - Anuj Shrestha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #64ffda;
+            --secondary-color: #8892b0;
+            --bg-color: #0a192f;
+            --light-slate: #a8b2d1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--light-slate);
+            font-family: 'Roboto Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(
+                circle at center,
+                rgba(100, 255, 218, 0.1) 0%,
+                rgba(100, 255, 218, 0) 70%
+            );
+            filter: blur(30px);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: transform 0.15s ease-out;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(10, 25, 47, 0.85);
+            padding: 1.5rem 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .project-title {
+            color: #ccd6f6;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .project-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        ul li:before {
+            content: '▹';
+            color: var(--primary-color);
+            position: absolute;
+            left: -1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li> <!-- Link back to main page -->
+            </ul>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container">
+            <h1 class="project-title">Spotify Controller</h1>
+            
+            <div class="project-section">
+                <h2 class="section-subtitle">Overview</h2>
+                <p>The Spotify Controller is an open-source hardware project designed to provide users with a physical interface to control Spotify playback. By integrating microcontroller technology with Spotify's Web API, this device allows for seamless control of music playback without relying on traditional input devices like keyboards or smartphones.</p>
+            </div>
+
+            <div class="project-section">
+                <h2 class="section-subtitle">Objectives</h2>
+                <ul>
+                    <li>Develop a standalone device capable of interfacing with Spotify to manage playback functions such as play, pause, skip, and volume adjustment.</li>
+                    <li>Enhance user experience by offering tactile controls for music playback.</li>
+                    <li>Provide an open-source solution that enthusiasts can build and customize.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h2 class="section-subtitle">Approach</h2>
+                <p>The project utilizes an ESP8266 microcontroller programmed to communicate with Spotify's Web API. The device connects to the internet via Wi-Fi, authenticates with Spotify, and sends commands based on user input. The main components and steps involved include:</p>
+                <ul>
+                    <li><strong>Hardware Setup:</strong> An ESP8266-based board serves as the core of the device. Physical buttons or rotary encoders are connected to the microcontroller to capture user inputs for various playback controls.</li>
+                    <li><strong>Firmware Development:</strong> The microcontroller is programmed using the Arduino framework. The spotify_buddy.ino file contains the main code that handles Wi-Fi connectivity, Spotify API authentication, and processing of user inputs to send appropriate commands to Spotify.</li>
+                    <li><strong>Web Interaction:</strong> The Web_Fetch.h library is employed to facilitate HTTP requests to Spotify's Web API, enabling the device to send playback commands and retrieve information about the current playback state.</li>
+                    <li><strong>Enclosure Design:</strong> A 3D-printable case has been designed to house the components, providing a compact and aesthetically pleasing form factor. The design files are available for users to print and assemble.</li>
+                </ul>
+            </div>
+
+            <div class="project-section">
+                <h2 class="section-subtitle">Impact</h2>
+                <p>This project offers a tangible and user-friendly method for controlling Spotify playback, enhancing the listening experience by reducing dependence on screen-based controls. As an open-source initiative, it encourages community contributions and customization, allowing users to adapt the device to their specific needs.</p>
+            </div>
+
+            <div class="project-section">
+                <h2 class="section-subtitle">Skills & Tools Used</h2>
+                <ul>
+                    <li>Embedded Systems: Programming the ESP8266 microcontroller using the Arduino framework.</li>
+                    <li>Networking: Implementing Wi-Fi connectivity and handling HTTP requests to interact with web APIs.</li>
+                    <li>API Integration: Authenticating and communicating with Spotify's Web API to control playback.</li>
+                    <li>Hardware Design: Integrating physical input components like buttons and encoders for user interaction.</li>
+                    <li>3D Modeling: Designing and printing a custom enclosure for the device.</li>
+                    <li>Repository: The complete source code, hardware schematics, and assembly instructions are available on GitLab.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const glow = document.querySelector('.cursor-glow');
+            
+            document.addEventListener('mousemove', (e) => {
+                glow.style.left = `${e.clientX}px`;
+                glow.style.top = `${e.clientY}px`;
+            });
+        });
+    </script>
+</body>
+</html>
